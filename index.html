@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valeriia Aksiutina — Program &amp; Engagement Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEF1F1;
+    --panel:#E4E9E9;
+    --ink:#14202E;
+    --ink-soft:#4A5A69;
+    --accent:#C1743A;
+    --accent-soft:#DCC2AC;
+    --rule:#C9D0D6;
+    --white:#FBFBF9;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent-soft);}
+  a{color:var(--accent);}
+  .wrap{max-width:800px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- header / hero ---------- */
+  header.hero{
+    border-bottom:1px solid var(--rule);
+    padding:56px 0 0 0;
+  }
+  .hero-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:20px;}
+  .name{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(2.1rem, 5vw, 3.1rem);
+    letter-spacing:-0.01em;
+    margin:0 0 6px 0;
+  }
+  .title{
+    font-size:1.05rem;
+    color:var(--ink-soft);
+    margin:0;
+  }
+  .contact-block{
+    text-align:right;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    line-height:1.75;
+  }
+  .contact-block a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--rule);}
+  .contact-block a:hover{color:var(--accent);border-color:var(--accent);}
+
+  .lede{
+    max-width:62ch;
+    margin:26px 0 0 0;
+    font-size:1.06rem;
+    color:var(--ink);
+  }
+
+  /* ---------- metrics strip ---------- */
+  .metrics{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    border-top:1px solid var(--rule);
+    margin-top:36px;
+  }
+  .metric{
+    padding:18px 14px 22px 0;
+    border-left:1px solid var(--rule);
+    padding-left:16px;
+  }
+  .metric:first-child{border-left:none;padding-left:0;}
+  .metric .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:1.5rem;
+    font-weight:500;
+    color:var(--accent);
+    display:block;
+  }
+  .metric .label{
+    font-size:0.8rem;
+    color:var(--ink-soft);
+    display:block;
+    margin-top:2px;
+  }
+
+  /* ---------- section scaffolding ---------- */
+  section{padding:52px 0;border-bottom:1px solid var(--rule);}
+  section:last-of-type{border-bottom:none;}
+  h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.5rem;
+    margin:0 0 28px 0;
+  }
+
+  /* ---------- how she works ---------- */
+  .principles{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px 32px;
+  }
+  .principle{padding-top:14px;border-top:2px solid var(--ink);}
+  .principle h3{
+    font-size:1rem;
+    margin:0 0 8px 0;
+    font-weight:600;
+  }
+  .principle p{margin:0;color:var(--ink-soft);font-size:0.95rem;}
+
+  /* ---------- foldable cards ---------- */
+  details.case, details.sample{
+    border:1px solid var(--rule);
+    background:var(--white);
+    margin-bottom:16px;
+  }
+  details.case:last-child, details.sample:last-child{margin-bottom:0;}
+  details.case summary, details.sample summary{
+    list-style:none;
+    cursor:pointer;
+    padding:22px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+  }
+  details.case summary::-webkit-details-marker,
+  details.sample summary::-webkit-details-marker{display:none;}
+  .chevron{
+    flex:0 0 auto;
+    width:18px;
+    height:18px;
+    margin-top:4px;
+    color:var(--accent);
+    transition:transform 0.15s ease;
+  }
+  details[open] .chevron{transform:rotate(180deg);}
+  .case-body, .sample-body{
+    padding:0 30px 26px 30px;
+  }
+  .sample-body{padding:0 0 0 0;}
+  .sample-body .sample-intro{padding:0 30px 18px 30px;margin:0;}
+  .sample-body .table-scroll{border:none;border-top:1px solid var(--rule);}
+  details.case summary:hover, details.sample summary:hover{background:var(--panel);}
+
+  /* ---------- case studies (inner content) ---------- */
+  .case{
+    border:1px solid var(--rule);
+    background:var(--white);
+    padding:28px 30px;
+    margin-bottom:22px;
+  }
+  .case:last-child{margin-bottom:0;}
+  .case-head h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.2rem;
+    margin:0 0 4px 0;
+  }
+  .case-head .case-meta{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    font-style:italic;
+    margin:0 0 18px 0;
+  }
+  .case-block{margin-bottom:16px;}
+  .case-block:last-child{margin-bottom:0;}
+  .case-block .kicker{
+    font-size:0.78rem;
+    font-weight:600;
+    color:var(--accent);
+    margin:0 0 6px 0;
+  }
+  .case-block p{margin:0;font-size:0.95rem;color:var(--ink);}
+  .case-block ul{margin:0;padding-left:18px;}
+  .case-block li{margin-bottom:6px;font-size:0.95rem;}
+  .case-block li:last-child{margin-bottom:0;}
+
+  /* ---------- work samples ---------- */
+  .sample-intro{max-width:70ch;margin:0 0 22px 0;color:var(--ink-soft);font-size:0.95rem;}
+  .table-scroll{
+    overflow-x:auto;
+    border:1px solid var(--rule);
+    background:var(--white);
+  }
+  table.crlog{
+    width:100%;
+    border-collapse:collapse;
+    font-size:0.85rem;
+    min-width:720px;
+  }
+  table.crlog th{
+    text-align:left;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:var(--ink-soft);
+    font-weight:600;
+    padding:10px 14px;
+    border-bottom:1px solid var(--rule);
+    background:var(--panel);
+    white-space:nowrap;
+  }
+  table.crlog td{
+    padding:12px 14px;
+    border-bottom:1px solid var(--rule);
+    vertical-align:top;
+  }
+  table.crlog tr:last-child td{border-bottom:none;}
+  table.crlog td.id{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--ink-soft);
+    white-space:nowrap;
+  }
+  table.crlog td.decision{white-space:nowrap;font-weight:600;}
+  table.crlog td.decision.approved{color:#3E7A4F;}
+  table.crlog td.decision.absorbed{color:var(--ink-soft);}
+  table.crlog td.decision.rejected{color:var(--accent);}
+  table.crlog td.sev-high{color:var(--accent);font-weight:600;}
+  table.crlog td.sev-med{color:var(--ink);font-weight:600;}
+  table.crlog td.sev-low{color:var(--ink-soft);font-weight:600;}
+
+  /* ---------- skills ---------- */
+  .skillgrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:26px 40px;
+  }
+  .skillcat h3{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    font-weight:600;
+    margin:0 0 8px 0;
+  }
+  .skillcat p{margin:0;font-size:0.95rem;}
+
+  /* ---------- mentorship ---------- */
+  .badge-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:22px 0 30px 0;
+  }
+  .badge-chip{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid var(--rule);
+    background:var(--white);
+    padding:8px 14px;
+    font-size:0.82rem;
+  }
+  .badge-chip .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--accent);
+    flex:0 0 auto;
+  }
+  .badge-chip .when{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--ink-soft);
+    font-size:0.76rem;
+  }
+  .quote-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  .quote-card{
+    border:1px solid var(--rule);
+    background:var(--white);
+    padding:24px 26px;
+    display:flex;
+    flex-direction:column;
+  }
+  .quote-mark{
+    font-family:'Fraunces', serif;
+    font-size:2.2rem;
+    color:var(--accent);
+    line-height:1;
+    margin:0 0 6px 0;
+  }
+  .quote-text{
+    font-size:0.92rem;
+    margin:0 0 16px 0;
+    flex:1;
+  }
+  .quote-attr{font-size:0.82rem;color:var(--ink-soft);}
+  .quote-attr b{color:var(--ink);font-weight:600;}
+
+  /* ---------- education / mentoring ---------- */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  .edu-item{margin-bottom:16px;}
+  .edu-item:last-child{margin-bottom:0;}
+  .edu-item .deg{font-weight:600;}
+  .edu-item .sch{color:var(--ink-soft);font-size:0.92rem;}
+  .callout{
+    background:var(--panel);
+    padding:20px 22px;
+    border-left:3px solid var(--accent);
+  }
+  .callout p{margin:0 0 10px 0;font-size:0.95rem;}
+  .callout p:last-child{margin-bottom:0;}
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:48px 0 60px 0;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+  footer .cta-text{font-family:'Fraunces', serif;font-size:1.3rem;max-width:40ch;}
+  .btn{
+    display:inline-block;
+    background:var(--ink);
+    color:var(--white);
+    padding:12px 22px;
+    text-decoration:none;
+    font-size:0.92rem;
+    border:1px solid var(--ink);
+  }
+  .btn:hover{background:transparent;color:var(--ink);}
+
+  @media (max-width:640px){
+    .metrics{grid-template-columns:repeat(2,1fr);row-gap:20px;}
+    .metric{border-left:none !important;padding-left:0 !important;border-top:1px solid var(--rule);padding-top:14px;}
+    .metric:first-child{border-top:none;padding-top:0;}
+    .principles, .skillgrid, .split{grid-template-columns:1fr;}
+    .role{grid-template-columns:1fr;gap:6px;}
+    .contact-block{text-align:left;}
+    .hero-top{flex-direction:column;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-top">
+      <div>
+        <p class="name">Valeriia Aksiutina</p>
+        <p class="title">Program &amp; Engagement Manager — SaaS delivery across EMEA</p>
+      </div>
+      <div class="contact-block">
+        <div>Warsaw, Poland</div>
+        <div><a href="mailto:aksiutinavaleriia@gmail.com">aksiutinavaleriia@gmail.com</a></div>
+        <div>+48 573 376 309</div>
+        <div><a href="https://linkedin.com/in/valeriia-aksiutina" target="_blank">linkedin.com/in/valeriia-aksiutina</a></div>
+      </div>
+    </div>
+
+    <p class="lede">Eight years turning messy, cross-functional programs into delivery that clients trust — onboarding, staffing, budgets, and reporting, all built to hold up under scale. I've run this playbook at a HR/Finance SaaS leader, a global engineering consultancy, and two product startups.</p>
+
+    <div class="metrics">
+      <div class="metric"><span class="num">8 yrs</span><span class="label">program &amp; delivery management</span></div>
+      <div class="metric"><span class="num">$1.5M+</span><span class="label">project budget managed</span></div>
+      <div class="metric"><span class="num">25</span><span class="label">person cross-functional team led</span></div>
+      <div class="metric"><span class="num">100%</span><span class="label">CSAT across active accounts</span></div>
+      <div class="metric"><span class="num">20</span><span class="label">concurrent programs, EMEA-wide</span></div>
+    </div>
+  </header>
+
+  <section id="how">
+    <h2>How I run a program</h2>
+    <div class="principles">
+      <div class="principle">
+        <h3>Make the complex legible</h3>
+        <p>Charters, scope docs, and status reporting that a stakeholder can read in two minutes — not because it's simpler, but because it's structured.</p>
+      </div>
+      <div class="principle">
+        <h3>Automate the busywork</h3>
+        <p>Workflow automation that removed 3+ hours of admin tracking per project at Workday, and cut manual accounting work 50% at SignNow.</p>
+      </div>
+      <div class="principle">
+        <h3>Watch the metrics, not the vibes</h3>
+        <p>Scope adherence and account health tracked continuously, so deviations get caught and corrected before they become client escalations.</p>
+      </div>
+      <div class="principle">
+        <h3>Leave the team stronger</h3>
+        <p>Onboarding materials that cut ramp-up time 15%, plus a PM course and active ADPList mentoring for people moving into the field.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases">
+    <h2>Project management case studies</h2>
+
+    <details class="case">
+      <summary>
+        <div class="case-head">
+          <h3>Case 1: Scope realignment &amp; margin protection</h3>
+          <p class="case-meta">Project Manager · Fixed-price · 55% margin preserved · 3-month extension</p>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="case-body">
+
+      <div class="case-block">
+        <p class="kicker">The challenge</p>
+        <p>Mid-delivery, executive stakeholders escalated two scope gaps: expecting advanced ML instead of the agreed deterministic automation, and missing several uncontracted edge cases. Attempting unstandardized ML work threatened project collapse on a fixed-fee budget.</p>
+      </div>
+
+      <div class="case-block">
+        <p class="kicker">The action</p>
+        <ul>
+          <li>Reconciled sales, discovery, and contract baselines internally before addressing the client</li>
+          <li>Absorbed minor internal delivery misses at no cost to build goodwill</li>
+          <li>Proved ML was technically unfeasible without prior data standardization, defining a clear architectural boundary</li>
+          <li>Structured the standardization and ML work into a separate, paid project phase</li>
+        </ul>
+      </div>
+
+      <div class="case-block">
+        <p class="kicker">The outcome</p>
+        <ul>
+          <li><b>Protected profitability:</b> maintained a 55% delivery margin by preventing severe scope creep</li>
+          <li><b>Account growth:</b> signed a 3-month paid follow-on SOW for Phase 2 implementation</li>
+        </ul>
+      </div>
+
+      <div class="case-block">
+        <p class="kicker">Process retrospective</p>
+        <p>Instituted a pre-sales delivery gate to strictly separate "automation" vs. "AI/ML" scoping language upfront.</p>
+      </div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>
+        <div class="case-head">
+          <h3>Case 2: Rapid team scaling &amp; platform migration</h3>
+          <p class="case-meta">Dedicated PM · SAFe/Agile · On-time delivery · 10 engineers onboarded · Stage 2 SOW won</p>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="case-body">
+
+      <div class="case-block">
+        <p class="kicker">The challenge</p>
+        <p>Mid-program, an enterprise platform migration for a global Oil &amp; Gas client faced a budget-to-scope deficit. The remaining allocated funds were insufficient to hit the hard deadline with the existing 15-person team, placing the release schedule and executive relationship at risk.</p>
+      </div>
+
+      <div class="case-block">
+        <p class="kicker">The action</p>
+        <ul>
+          <li>Audited and re-baselined the backlog with the Lead BA and Solution Architect to isolate critical path deliverables</li>
+          <li>Modeled three scenario forecasts for leadership: reduce scope, extend timeline, or scale team capacity</li>
+          <li>Led the decision to scale, directly flagging Brooks's Law ramp risks and structuring a 3-week onboarding buffer</li>
+          <li>Recruited, integrated, and restructured 10 new engineers/QAs within 4 weeks (15 → 25), organizing delivery into two parallel, autonomous pods</li>
+        </ul>
+      </div>
+
+      <div class="case-block">
+        <p class="kicker">The outcome</p>
+        <ul>
+          <li><b>Hit critical deadline:</b> delivered 100% of high- and medium-priority scope on time with only a modest, planned budget variance</li>
+          <li><b>Account expansion:</b> high delivery confidence directly secured a follow-on SOW for Stage 2</li>
+        </ul>
+      </div>
+
+      <div class="case-block">
+        <p class="kicker">Process retrospective</p>
+        <p>The 3-week onboarding buffer strained lead engineers who were ramping newcomers while delivering; identified that future scale-ups require a 4-to-6 week staggered onboarding window.</p>
+      </div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>
+        <div class="case-head">
+          <h3>Case 3: Client de-escalation &amp; account recovery</h3>
+          <p class="case-meta">Engagement Manager · Enterprise SaaS · Escalation defused · Re-review delivered · Account trust restored</p>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="case-body">
+
+      <div class="case-block">
+        <p class="kicker">The challenge</p>
+        <p>Following a post-implementation system review, an enterprise customer rejected the initial findings, feeling the advice was abstract, misaligned with their operational reality, and unhelpful. The customer disengaged, halting the delivery stream and putting account sentiment at risk.</p>
+      </div>
+
+      <div class="case-block">
+        <p class="kicker">The action</p>
+        <ul>
+          <li>Stepped in directly with the client PM and Customer Success to listen to grievances and diagnose why the original recommendations missed the mark</li>
+          <li>Partnered with consulting management to rotate the technical consultant for an SME with stronger advisory and domain communication skills</li>
+          <li>Re-initiated a structured discovery pass focused on translating technical system configurations directly into business benefits the client understood</li>
+          <li>Kept Sales, Consulting Leadership, and CS synchronized throughout the reset to ensure a unified, supportive front</li>
+        </ul>
+      </div>
+
+      <div class="case-block">
+        <p class="kicker">The outcome</p>
+        <ul>
+          <li><b>Delivered &amp; accepted:</b> client fully accepted the revised findings, resetting the engagement tone from defensive to collaborative</li>
+          <li><b>Protected account:</b> successfully resolved an active escalation without commercial fallout or churn</li>
+        </ul>
+      </div>
+
+      <div class="case-block">
+        <p class="kicker">Process retrospective</p>
+        <p>Mid-project feedback check-ins had gone unanswered earlier by the customer; reinforced that client silence is an active risk indicator requiring a live touchpoint rather than waiting for formal deliverable handoffs.</p>
+      </div>
+      </div>
+    </details>
+  </section>
+
+  <section id="samples">
+    <h2>Work samples</h2>
+    <details class="sample">
+      <summary>
+        <div class="case-head">
+          <h3>Change Request &amp; Scope Decision Log</h3>
+          <p class="case-meta">Working document from Case 1 · tracks disputed scope items, delivery impact, and commercial calls</p>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="sample-body">
+        <p class="sample-intro">An excerpt from the log I ran during the scope-realignment case above — the actual working document used to track each disputed item, the delivery impact, and the commercial call, so every scope decision had a clear paper trail back to a rationale.</p>
+
+        <div class="table-scroll">
+      <table class="crlog">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Feature / request</th>
+            <th>SOW baseline</th>
+            <th>Technical / delivery impact</th>
+            <th>Commercial decision</th>
+            <th>Rationale &amp; next steps</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="id">CR-01</td>
+            <td>Deterministic invoice field extraction (standard PDF templates)</td>
+            <td>In scope</td>
+            <td>Baseline workflow; rule-based regex parsing integrated into the primary pipeline</td>
+            <td class="decision approved">Approved (fixed-price)</td>
+            <td>Core milestone deliverable, on track for scheduled release</td>
+          </tr>
+          <tr>
+            <td class="id">CR-02</td>
+            <td>Uncontracted edge-case routing (handwritten annotations &amp; irregular currency formats)</td>
+            <td>Out of scope (omitted in discovery)</td>
+            <td>~16 engineering hours; minor adjustment to fallback parsing rules</td>
+            <td class="decision absorbed">Absorbed ($0 goodwill)</td>
+            <td>Conceded as strategic goodwill due to ambiguous discovery documentation; protects delivery momentum</td>
+          </tr>
+          <tr>
+            <td class="id">CR-03</td>
+            <td>Dynamic ML layout classification (self-learning multi-format invoice parser)</td>
+            <td>Out of scope (client misalignment)</td>
+            <td>High complexity; requires unbudgeted data cleansing, model training, and continuous validation loops</td>
+            <td class="decision rejected">Rejected from Phase 1</td>
+            <td>Model training is architecturally premature without prior data normalization; holding the line to defend the 55% target margin</td>
+          </tr>
+          <tr>
+            <td class="id">CR-04</td>
+            <td>Data normalization &amp; historical pipeline (prerequisite for ML)</td>
+            <td>Out of scope (unidentified dependency)</td>
+            <td>Multi-week architectural overhaul to clean and structure legacy invoice stores</td>
+            <td class="decision approved">Approved as Phase 2 SOW</td>
+            <td>Scoped into a separate, paid 3-month contract extension to prepare clean training sets</td>
+          </tr>
+          <tr>
+            <td class="id">CR-05</td>
+            <td>Phase 2 production ML model integration</td>
+            <td>Out of scope</td>
+            <td>Full ML inference pipeline with human-in-the-loop retraining</td>
+            <td class="decision approved">Approved as Phase 2 SOW</td>
+            <td>Formally scheduled to follow Phase 2 normalization under the new expanded budget</td>
+          </tr>
+        </tbody>
+      </table>
+        </div>
+      </div>
+    </details>
+
+    <details class="sample">
+      <summary>
+        <div class="case-head">
+          <h3>Risk management</h3>
+          <p class="case-meta">Sanitized governance excerpt demonstrating quantitative risk prioritization (5×5 severity matrix) and rapid blocker triage during technical delivery</p>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="sample-body">
+        <p class="sample-intro">Every risk is scored as Impact × Likelihood (1–5 each) to produce a Severity index from 1–25, then routed to one of four strategies — Accept, Mitigate, Transfer, or Avoid — so prioritization is a calculation, not a judgment call. In parallel, live blockers and dependencies are logged and triaged separately from long-range risk, so day-to-day delivery friction gets resolved fast without polluting the strategic risk view.</p>
+
+        <p class="kicker" style="margin-bottom:10px;">Risk management approach</p>
+        <div class="skillgrid" style="margin:0 30px 24px 30px;">
+          <div class="skillcat">
+            <h3>Risk vs. issue</h3>
+            <p>A risk is a future event that could negatively affect schedule or cost. An issue is a problem that already exists today and needs immediate handling.</p>
+          </div>
+          <div class="skillcat">
+            <h3>Scoring</h3>
+            <p>Likelihood (0–5) × Impact (0–5) = Severity (0–25) — a consistent, comparable score for ranking every risk on the register.</p>
+          </div>
+          <div class="skillcat">
+            <h3>Status flow</h3>
+            <p>Active (identified, under observation) → In progress (triggered, mitigation underway) → Closed (no longer relevant).</p>
+          </div>
+          <div class="skillcat">
+            <h3>Mitigation strategy</h3>
+            <p>Every risk is assigned one of four responses: Accept, Mitigate, Transfer, or Avoid — decided at the point of entry, not after the fact.</p>
+          </div>
+          <div class="skillcat">
+            <h3>Ownership</h3>
+            <p>Each risk has a named owner responsible for monitoring it and executing the mitigation plan.</p>
+          </div>
+          <div class="skillcat">
+            <h3>Early warning</h3>
+            <p>Symptoms (leading indicators) are logged against each risk, so a trigger event prompts action before the risk becomes an issue.</p>
+          </div>
+        </div>
+
+        <p class="kicker" style="margin-bottom:10px;">Risk register — severity matrix excerpt</p>
+        <div class="table-scroll">
+          <table class="crlog">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Status</th>
+                <th>Impact</th>
+                <th>Likelihood</th>
+                <th>Severity</th>
+                <th>Mitigation strategy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="id">R-03</td><td>Active</td><td>5</td><td>5</td><td class="sev-high">25</td><td>Transfer</td></tr>
+              <tr><td class="id">R-09</td><td>Closed</td><td>5</td><td>5</td><td class="sev-high">25</td><td>Transfer</td></tr>
+              <tr><td class="id">R-12</td><td>In progress</td><td>5</td><td>4</td><td class="sev-high">20</td><td>Mitigate</td></tr>
+              <tr><td class="id">R-15</td><td>Active</td><td>4</td><td>4</td><td class="sev-med">16</td><td>Mitigate</td></tr>
+              <tr><td class="id">R-21</td><td>Active</td><td>4</td><td>3</td><td class="sev-med">12</td><td>Mitigate</td></tr>
+              <tr><td class="id">R-13</td><td>In progress</td><td>2</td><td>3</td><td class="sev-low">6</td><td>Transfer</td></tr>
+              <tr><td class="id">R-02</td><td>Active</td><td>1</td><td>5</td><td class="sev-low">5</td><td>Mitigate</td></tr>
+              <tr><td class="id">R-14</td><td>In progress</td><td>2</td><td>1</td><td class="sev-low">2</td><td>Accept</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="kicker" style="margin:24px 0 10px 0;">Blocker &amp; dependency triage — resolution log</p>
+        <div class="table-scroll">
+          <table class="crlog">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Impact</th>
+                <th>Resolution notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="id">1</td><td>Provisioning application secrets — delay receiving Salesforce &amp; app identity configuration</td><td>Closed</td><td>High</td><td>Blocked application testing until settings were provided</td></tr>
+              <tr><td class="id">2</td><td>Provisioning a Salesforce dev instance for integration testing</td><td>Closed</td><td>High</td><td>No integration testing possible without a dev instance — resolved in 6 days; team blocked up to 6 person-days</td></tr>
+              <tr><td class="id">3</td><td>CI pipeline builds failing</td><td>Closed</td><td>High</td><td>Resolved same sprint</td></tr>
+              <tr><td class="id">4</td><td>Dependency/package updates blocking release verification</td><td>Closed</td><td>High</td><td>Blocked the release verification workflow for 3 days pending review</td></tr>
+              <tr><td class="id">5</td><td>Billing module misbehaving in beta environment</td><td>Closed</td><td>Medium</td><td>Release couldn't be created with billing enabled; invoices weren't generating</td></tr>
+              <tr><td class="id">6</td><td>Staging environment instability blocked dev/test access</td><td>Closed</td><td>High</td><td>2–3 day delay from access/config issues; impact communicated proactively to stakeholders</td></tr>
+              <tr><td class="id">7</td><td>Legacy data cleanup required on staging environment</td><td>Open</td><td>Medium</td><td>DB reset needed, ~1 day impact across QC &amp; dev; added to sprint review</td></tr>
+              <tr><td class="id">8</td><td>Builds failing mid-week</td><td>Closed</td><td>Medium</td><td>Fixed the following business day; QC team most affected</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <details class="sample">
+      <summary>
+        <div class="case-head">
+          <h3>Discovery book: stakeholder &amp; scope discovery framework</h3>
+          <p class="case-meta">Anonymized excerpt — stakeholder mapping, session cadence, and open-question tracking used to align a multi-team engagement before delivery began</p>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="sample-body">
+        <p class="sample-intro">Run at the start of a multi-team engagement to de-risk delivery before it begins: mapping every stakeholder's role and communication touchpoints, running a structured sequence of discovery sessions, and logging every open question until it's formally closed. All names, company identifiers, and client-specific technical details below have been generalized.</p>
+
+        <p class="kicker" style="margin:0 30px 10px 30px;">Stakeholder &amp; communication RACI (excerpt)</p>
+        <div class="table-scroll">
+          <table class="crlog">
+            <thead>
+              <tr><th>Role</th><th>Org</th><th>Primary responsibility</th><th>Kickoff</th><th>Weekly status</th><th>Governance</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Engineering VP</td><td>Client</td><td>Executive sponsor &amp; escalation point</td><td>✓</td><td>✓</td><td>–</td></tr>
+              <tr><td>Product Owner</td><td>Client</td><td>Requirements &amp; scope authority</td><td>✓</td><td>✓</td><td>–</td></tr>
+              <tr><td>Solutions Architect</td><td>Client</td><td>Architecture guidance, technical Q&amp;A</td><td>–</td><td>–</td><td>–</td></tr>
+              <tr><td>Delivery PM</td><td>Delivery partner</td><td>Coordinates all cross-team activity</td><td>✓</td><td>✓</td><td>✓</td></tr>
+              <tr><td>Business Analyst</td><td>Delivery partner</td><td>Requirements documentation, roadmap</td><td>✓</td><td>✓</td><td>–</td></tr>
+              <tr><td>Solutions Architect</td><td>Delivery partner</td><td>Scope estimation, technical design</td><td>✓</td><td>✓</td><td>–</td></tr>
+              <tr><td>Delivery Team Lead</td><td>Delivery partner</td><td>Owns delivery execution</td><td>✓</td><td>–</td><td>–</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="kicker" style="margin:24px 30px 10px 30px;">Discovery session cadence (excerpt)</p>
+        <div class="table-scroll">
+          <table class="crlog">
+            <thead>
+              <tr><th>Session</th><th>Type</th><th>Focus</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Discovery kick-off</td><td>Functional</td><td>Stakeholders, dependencies, goals, scope boundaries, timeline alignment</td><td>Completed</td></tr>
+              <tr><td>Product review</td><td>Functional</td><td>Backlog review, in-scope items, acceptance criteria</td><td>Completed</td></tr>
+              <tr><td>Architecture review</td><td>Technical</td><td>Documentation, source repos, data structures, integration points</td><td>Completed</td></tr>
+              <tr><td>Scope refinement (series)</td><td>Functional</td><td>Iterative scope narrowing with product owners</td><td>Completed</td></tr>
+              <tr><td>Testing approach &amp; knowledge share</td><td>Functional</td><td>QA strategy alignment, tooling</td><td>Completed</td></tr>
+              <tr><td>Discovery outcomes presentation</td><td>Functional</td><td>Final scope, architecture, estimate, team composition, risks, timeline</td><td>Completed</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="kicker" style="margin:24px 30px 10px 30px;">Open questions log (excerpt)</p>
+        <div class="table-scroll">
+          <table class="crlog">
+            <thead>
+              <tr><th>Question</th><th>Raised by</th><th>Type</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Who are the key stakeholders across business, product, and engineering?</td><td>PM</td><td>Organizational</td><td>Resolved</td></tr>
+              <tr><td>What are the business goals and success criteria for the engagement?</td><td>BA</td><td>Functional</td><td>Resolved</td></tr>
+              <tr><td>How is product ownership divided, and who owns the master backlog?</td><td>BA</td><td>Organizational</td><td>Open</td></tr>
+              <tr><td>What existing work can be reused from the prior delivery team?</td><td>BA</td><td>Functional</td><td>Open</td></tr>
+              <tr><td>What's the preferred communication framework going forward — cadence, escalation path?</td><td>BA</td><td>Organizational</td><td>Open</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="kicker" style="margin:24px 30px 10px 30px;">Deliverables tracker (excerpt)</p>
+        <div class="table-scroll">
+          <table class="crlog">
+            <thead>
+              <tr><th>Deliverable</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Discovery kickoff &amp; initial approach</td><td class="decision approved">Done</td></tr>
+              <tr><td>Architecture solution overview</td><td class="decision approved">Done</td></tr>
+              <tr><td>Scope &amp; vision overview</td><td class="decision approved">Done</td></tr>
+              <tr><td>Out-of-scope statement</td><td class="decision approved">Done</td></tr>
+              <tr><td>Assumptions &amp; constraints</td><td class="decision approved">Done</td></tr>
+              <tr><td>Initial risk register</td><td class="decision approved">Done</td></tr>
+              <tr><td>Work breakdown structure &amp; estimate</td><td class="decision approved">Done</td></tr>
+              <tr><td>Preliminary timeline</td><td class="decision approved">Done</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section id="skills">
+    <h2>Toolkit</h2>
+    <div class="skillgrid">
+      <div class="skillcat">
+        <h3>Methodologies</h3>
+        <p>Agile, Scrum, Kanban, SAFe, Waterfall</p>
+      </div>
+      <div class="skillcat">
+        <h3>Program management</h3>
+        <p>Scope, schedule &amp; budget management, stakeholder &amp; people management, risk management, roadmapping, prioritization, change management</p>
+      </div>
+      <div class="skillcat">
+        <h3>Tools</h3>
+        <p>JIRA, Confluence, Asana, Smartsheets, Figma, Adobe XD, Miro, Google Suite, MS Office</p>
+      </div>
+      <div class="skillcat">
+        <h3>AI-assisted delivery</h3>
+        <p>Prompt engineering and AI-assisted workflow optimization, using Claude, Gemini, and Lovable to speed up reporting and process work</p>
+      </div>
+      <div class="skillcat">
+        <h3>Languages</h3>
+        <p>English (advanced), Ukrainian (native), Russian (advanced), Polish (pre-intermediate)</p>
+      </div>
+      <div class="skillcat">
+        <h3>Certification</h3>
+        <p>ICAgile Certified Professional — Agile Project and Delivery Management</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="edu-item">
+      <div class="deg">MSc, Project Management</div>
+      <div class="sch">Sumy State University, Ukraine</div>
+    </div>
+    <div class="edu-item">
+      <div class="deg">BSc, Germanic Philology</div>
+      <div class="sch">Sumy State University, Ukraine</div>
+    </div>
+  </section>
+
+  <section id="mentorship">
+    <h2>Mentorship &amp; teaching</h2>
+    <p class="lede" style="margin-top:0;">I delivered a university-level PM course to 10+ participants — two secured PM job offers as a result — and I'm an active mentor on <a href="https://adplist.org/mentors/valeriia-aksiutina" target="_blank">ADPList</a>, helping people transition into project management, prepare for their first PM role, and build portfolios that show real work rather than just job titles.</p>
+
+    <div class="badge-row">
+      <div class="badge-chip"><span class="dot"></span>Top 50 Mentor <span class="when">Jun 2026</span></div>
+      <div class="badge-chip"><span class="dot"></span>Top 50 Mentor <span class="when">Mar 2026</span></div>
+      <div class="badge-chip"><span class="dot"></span>Top 100 Mentor <span class="when">Jun 2025</span></div>
+      <div class="badge-chip"><span class="dot"></span>Top 50 Mentor <span class="when">Mar 2025</span></div>
+    </div>
+
+    <div class="quote-grid">
+      <div class="quote-card">
+        <p class="quote-mark">&#8220;</p>
+        <p class="quote-text">I had the pleasure of connecting with Valeriia for a mentoring session, the insight she packed into one hour was remarkable. Her guidance on stakeholder management, trust-building, and change management gave me frameworks I could apply immediately. She also gave clear, actionable advice on tailoring my resume and building a portfolio that showcases real work. What stood out most was how direct and structured her advice was, no fluff, just practical insights. Highly recommend connecting with her.</p>
+        <p class="quote-attr"><b>Sherwin Joseph</b> — Project Coordinator, University Canada West</p>
+      </div>
+      <div class="quote-card">
+        <p class="quote-mark">&#8220;</p>
+        <p class="quote-text">I came to the session looking for guidance on transitioning into Project Management and preparing for my first day while managing multiple projects. The session was extremely helpful and flew by. Valeriia was clearly very well prepared and quickly understood my goals and context. The conversation was easy, practical, and focused on real actions. I got clear structure, useful insights, and a concrete plan I can apply right away. Highly recommend.</p>
+        <p class="quote-attr"><b>Ostap Blystsiv</b> — Student, Ivan Franko National University of Lviv</p>
+      </div>
+      <div class="quote-card">
+        <p class="quote-mark">&#8220;</p>
+        <p class="quote-text">Valeriia has been an outstanding mentor in my journey. Her amazing communication and deep subject knowledge made our sessions incredibly insightful. She motivated me and provided excellent problem-solving strategies that truly helped me overcome challenges. I highly recommend booking a session with her if you're looking for an exceptional experience that exceeds expectations.</p>
+        <p class="quote-attr"><b>Vaishnavi Powar</b> — Project Coordinator, Lumen</p>
+      </div>
+      <div class="quote-card">
+        <p class="quote-mark">&#8220;</p>
+        <p class="quote-text">Valeriia is a very passionate and energetic professional with years of experience in IT project management. She shared valuable insights about the industry and the realities of the role with me, which I found incredibly helpful.</p>
+        <p class="quote-attr"><b>Yating Wu</b> — Growth Marketer, Durham University</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <a class="btn" href="mailto:aksiutinavaleriia@gmail.com">Email me</a>
+  </footer>
+
+</div>
+</body>
+</html>
