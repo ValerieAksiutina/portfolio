@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valeriia Aksiutina — Program &amp; Engagement Manager</title>
+<title>Valeriia Aksiutina — Technical Program &amp; Engagement Manager</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -11,12 +11,15 @@
   :root{
     --paper:#EEF1F1;
     --panel:#E4E9E9;
+    --card:#FBFBF9;
     --ink:#14202E;
     --ink-soft:#4A5A69;
-    --accent:#C1743A;
-    --accent-soft:#DCC2AC;
     --rule:#C9D0D6;
-    --white:#FBFBF9;
+    --accent:#C1743A;
+    --accent-soft:#F0E2D6;
+    --good:#3E7A4F;
+    --warn:#B07B2B;
+    --bad:#A8503C;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -30,29 +33,69 @@
   }
   ::selection{background:var(--accent-soft);}
   a{color:var(--accent);}
-  .wrap{max-width:800px;margin:0 auto;padding:0 28px;}
+  .wrap{max-width:860px;margin:0 auto;padding:0 28px;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 
-  /* ---------- header / hero ---------- */
-  header.hero{
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky;
+    top:0;
+    z-index:20;
+    height:56px;
+    background:rgba(238,241,241,0.94);
+    -webkit-backdrop-filter:blur(6px);
+    backdrop-filter:blur(6px);
     border-bottom:1px solid var(--rule);
-    padding:56px 0 0 0;
   }
+  .topbar .wrap{
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.05rem;
+    color:var(--ink);
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .navlinks{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    overflow-x:auto;
+  }
+  .navlinks a{
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-size:0.85rem;
+    white-space:nowrap;
+  }
+  .navlinks a:hover{color:var(--accent);}
+
+  /* ---------- hero ---------- */
+  header.hero{padding:48px 0 0 0;}
   .hero-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:20px;}
   .name{
     font-family:'Fraunces', serif;
     font-weight:500;
-    font-size:clamp(2.1rem, 5vw, 3.1rem);
+    font-size:clamp(2rem, 5vw, 3rem);
     letter-spacing:-0.01em;
     margin:0 0 6px 0;
   }
-  .title{
+  .role{
     font-size:1.05rem;
     color:var(--ink-soft);
     margin:0;
   }
   .contact-block{
     text-align:right;
-    font-size:0.92rem;
+    font-size:0.88rem;
     color:var(--ink-soft);
     line-height:1.75;
   }
@@ -60,50 +103,56 @@
   .contact-block a:hover{color:var(--accent);border-color:var(--accent);}
 
   .lede{
-    max-width:62ch;
-    margin:26px 0 0 0;
-    font-size:1.06rem;
+    max-width:64ch;
+    margin:24px 0 0 0;
+    font-size:1.05rem;
     color:var(--ink);
   }
 
-  /* ---------- metrics strip ---------- */
+  /* ---------- metric ribbon ---------- */
   .metrics{
     display:grid;
     grid-template-columns:repeat(5, 1fr);
     border-top:1px solid var(--rule);
-    margin-top:36px;
+    margin-top:34px;
   }
   .metric{
-    padding:18px 14px 22px 0;
+    padding:16px 14px 22px 0;
     border-left:1px solid var(--rule);
     padding-left:16px;
   }
   .metric:first-child{border-left:none;padding-left:0;}
   .metric .num{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:1.5rem;
+    font-size:1.45rem;
     font-weight:500;
     color:var(--accent);
     display:block;
   }
   .metric .label{
-    font-size:0.8rem;
+    font-size:0.78rem;
     color:var(--ink-soft);
     display:block;
-    margin-top:2px;
+    margin-top:4px;
   }
 
   /* ---------- section scaffolding ---------- */
-  section{padding:52px 0;border-bottom:1px solid var(--rule);}
+  section{padding:50px 0;border-bottom:1px solid var(--rule);}
   section:last-of-type{border-bottom:none;}
   h2{
     font-family:'Fraunces', serif;
     font-weight:500;
     font-size:1.5rem;
-    margin:0 0 28px 0;
+    margin:0 0 10px 0;
+  }
+  .section-intro{
+    max-width:70ch;
+    color:var(--ink-soft);
+    font-size:0.98rem;
+    font-style:italic;
+    margin:0 0 30px 0;
   }
 
-  /* ---------- how she works ---------- */
+  /* ---------- approach grid ---------- */
   .principles{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -117,86 +166,108 @@
   }
   .principle p{margin:0;color:var(--ink-soft);font-size:0.95rem;}
 
-  /* ---------- foldable cards ---------- */
-  details.case, details.sample{
-    border:1px solid var(--rule);
-    background:var(--white);
-    margin-bottom:16px;
-  }
-  details.case:last-child, details.sample:last-child{margin-bottom:0;}
-  details.case summary, details.sample summary{
-    list-style:none;
-    cursor:pointer;
-    padding:22px 30px;
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:16px;
-  }
-  details.case summary::-webkit-details-marker,
-  details.sample summary::-webkit-details-marker{display:none;}
-  .chevron{
-    flex:0 0 auto;
-    width:18px;
-    height:18px;
-    margin-top:4px;
-    color:var(--accent);
-    transition:transform 0.15s ease;
-  }
-  details[open] .chevron{transform:rotate(180deg);}
-  .case-body, .sample-body{
-    padding:0 30px 26px 30px;
-  }
-  .sample-body{padding:0 0 0 0;}
-  .sample-body .sample-intro{padding:0 30px 18px 30px;margin:0;}
-  .sample-body .table-scroll{border:none;border-top:1px solid var(--rule);}
-  details.case summary:hover, details.sample summary:hover{background:var(--panel);}
-
-  /* ---------- case studies (inner content) ---------- */
+  /* ---------- case study cards ---------- */
   .case{
     border:1px solid var(--rule);
-    background:var(--white);
+    background:var(--card);
     padding:28px 30px;
     margin-bottom:22px;
   }
   .case:last-child{margin-bottom:0;}
-  .case-head h3{
+  .case h3{
     font-family:'Fraunces', serif;
     font-weight:500;
     font-size:1.2rem;
-    margin:0 0 4px 0;
+    margin:0 0 12px 0;
   }
-  .case-head .case-meta{
-    font-size:0.85rem;
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+  .tag{
+    border:1px solid var(--rule);
     color:var(--ink-soft);
-    font-style:italic;
-    margin:0 0 18px 0;
+    font-size:0.72rem;
+    padding:3px 9px;
+    white-space:nowrap;
   }
-  .case-block{margin-bottom:16px;}
-  .case-block:last-child{margin-bottom:0;}
-  .case-block .kicker{
-    font-size:0.78rem;
-    font-weight:600;
+  .case-cols{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:20px;
+    margin-bottom:20px;
+  }
+  .case-cols:last-of-type{margin-bottom:0;}
+  .case-cols .kicker{
+    font-size:0.74rem;
+    font-weight:500;
+    color:var(--accent);
+    margin:0 0 6px 0;
+    text-transform:lowercase;
+  }
+  .case-cols p{margin:0;font-size:0.92rem;color:var(--ink);}
+  .retro{
+    border-left:3px solid var(--accent-soft);
+    padding:4px 0 4px 16px;
+    margin-top:20px;
+  }
+  .retro .kicker{
+    font-size:0.74rem;
+    font-weight:500;
     color:var(--accent);
     margin:0 0 6px 0;
   }
-  .case-block p{margin:0;font-size:0.95rem;color:var(--ink);}
-  .case-block ul{margin:0;padding-left:18px;}
-  .case-block li{margin-bottom:6px;font-size:0.95rem;}
-  .case-block li:last-child{margin-bottom:0;}
+  .retro p{margin:0;color:var(--ink-soft);font-size:0.92rem;}
 
-  /* ---------- work samples ---------- */
-  .sample-intro{max-width:70ch;margin:0 0 22px 0;color:var(--ink-soft);font-size:0.95rem;}
+  /* ---------- work sample artifacts ---------- */
+  .artifact{
+    border:1px solid var(--rule);
+    background:var(--card);
+    margin-bottom:22px;
+  }
+  .artifact:last-child{margin-bottom:0;}
+  .artifact-head{
+    background:var(--panel);
+    border-bottom:1px solid var(--rule);
+    padding:18px 26px;
+  }
+  .artifact-head h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.1rem;
+    margin:0 0 4px 0;
+  }
+  .artifact-head p{
+    margin:0;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    font-style:italic;
+  }
+  .artifact-body{padding:24px 26px;}
+  .sub-label{
+    font-size:0.75rem;
+    color:var(--ink-soft);
+    margin:0 0 10px 0;
+  }
+  .sub-label:not(:first-child){margin-top:22px;}
+  .block-list{margin:22px 0 0 0;}
+  .block-list .kicker{
+    font-size:0.74rem;
+    font-weight:500;
+    color:var(--accent);
+    margin:0 0 8px 0;
+  }
+  .block-list ul{margin:0;padding-left:18px;}
+  .block-list li{margin-bottom:6px;font-size:0.92rem;}
+  .block-list li:last-child{margin-bottom:0;}
+
   .table-scroll{
     overflow-x:auto;
     border:1px solid var(--rule);
-    background:var(--white);
+    background:var(--card);
   }
   table.crlog{
     width:100%;
     border-collapse:collapse;
-    font-size:0.85rem;
-    min-width:720px;
+    font-size:0.84rem;
+    min-width:660px;
   }
   table.crlog th{
     text-align:left;
@@ -216,32 +287,71 @@
     vertical-align:top;
   }
   table.crlog tr:last-child td{border-bottom:none;}
-  table.crlog td.id{
-    font-family:'IBM Plex Mono', monospace;
-    color:var(--ink-soft);
+  table.crlog td.id{color:var(--ink-soft);white-space:nowrap;}
+  table.crlog td.num{white-space:nowrap;}
+  .sev-high{color:var(--bad);font-weight:600;}
+  .sev-med{color:var(--warn);font-weight:600;}
+  .sev-low{color:var(--good);font-weight:600;}
+
+  .pill{
+    display:inline-flex;
+    align-items:center;
+    font-size:0.72rem;
+    padding:2px 8px;
+    border:1px solid currentColor;
     white-space:nowrap;
   }
-  table.crlog td.decision{white-space:nowrap;font-weight:600;}
-  table.crlog td.decision.approved{color:#3E7A4F;}
-  table.crlog td.decision.absorbed{color:var(--ink-soft);}
-  table.crlog td.decision.rejected{color:var(--accent);}
-  table.crlog td.sev-high{color:var(--accent);font-weight:600;}
-  table.crlog td.sev-med{color:var(--ink);font-weight:600;}
-  table.crlog td.sev-low{color:var(--ink-soft);font-weight:600;}
+  .pill-good{color:var(--good);}
+  .pill-warn{color:var(--warn);}
+  .pill-bad{color:var(--bad);}
+  .pill-neutral{color:var(--ink-soft);}
 
-  /* ---------- skills ---------- */
-  .skillgrid{
+  /* ---------- product project ---------- */
+  .product-card h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.25rem;
+    margin:0 0 12px 0;
+  }
+  .product-card .kicker{
+    font-size:0.74rem;
+    font-weight:500;
+    color:var(--accent);
+    margin:20px 0 6px 0;
+  }
+  .product-card p{margin:0;font-size:0.95rem;}
+  .product-card ul{margin:8px 0 0 0;padding-left:18px;}
+  .product-card li{margin-bottom:6px;font-size:0.92rem;}
+  .link-buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;}
+  .link-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--panel);
+    border:1px solid var(--rule);
+    color:var(--ink);
+    text-decoration:none;
+    padding:10px 18px;
+    font-size:0.9rem;
+  }
+  .link-btn:hover{border-color:var(--accent);color:var(--accent);}
+  .link-btn svg{flex:0 0 auto;width:14px;height:14px;}
+
+  /* ---------- stack & background ---------- */
+  .stackgrid{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:26px 40px;
   }
-  .skillcat h3{
+  .stackcat h3{
     font-size:0.85rem;
     color:var(--ink-soft);
     font-weight:600;
     margin:0 0 8px 0;
   }
-  .skillcat p{margin:0;font-size:0.95rem;}
+  .stackcat p{margin:0;font-size:0.95rem;}
+  .stackcat .deg{font-weight:600;}
+  .stackcat .sch{color:var(--ink-soft);font-size:0.92rem;display:block;margin-top:6px;}
 
   /* ---------- mentorship ---------- */
   .badge-row{
@@ -253,19 +363,14 @@
   .badge-chip{
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:10px;
     border:1px solid var(--rule);
-    background:var(--white);
+    background:var(--card);
     padding:8px 14px;
     font-size:0.82rem;
   }
-  .badge-chip .dot{
-    width:7px;height:7px;border-radius:50%;
-    background:var(--accent);
-    flex:0 0 auto;
-  }
+  .badge-chip svg{flex:0 0 auto;width:22px;height:22px;color:var(--accent);}
   .badge-chip .when{
-    font-family:'IBM Plex Mono', monospace;
     color:var(--ink-soft);
     font-size:0.76rem;
   }
@@ -276,7 +381,7 @@
   }
   .quote-card{
     border:1px solid var(--rule);
-    background:var(--white);
+    background:var(--card);
     padding:24px 26px;
     display:flex;
     flex-direction:column;
@@ -296,49 +401,35 @@
   .quote-attr{font-size:0.82rem;color:var(--ink-soft);}
   .quote-attr b{color:var(--ink);font-weight:600;}
 
-  /* ---------- education / mentoring ---------- */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
-  .edu-item{margin-bottom:16px;}
-  .edu-item:last-child{margin-bottom:0;}
-  .edu-item .deg{font-weight:600;}
-  .edu-item .sch{color:var(--ink-soft);font-size:0.92rem;}
-  .callout{
-    background:var(--panel);
-    padding:20px 22px;
-    border-left:3px solid var(--accent);
-  }
-  .callout p{margin:0 0 10px 0;font-size:0.95rem;}
-  .callout p:last-child{margin-bottom:0;}
-
   /* ---------- footer ---------- */
   footer{
-    padding:48px 0 60px 0;
+    padding:40px 0 56px 0;
     display:flex;
-    justify-content:flex-end;
-    align-items:center;
+    justify-content:space-between;
+    align-items:flex-start;
     flex-wrap:wrap;
-    gap:20px;
+    gap:16px;
   }
-  footer .cta-text{font-family:'Fraunces', serif;font-size:1.3rem;max-width:40ch;}
-  .btn{
-    display:inline-block;
-    background:var(--ink);
-    color:var(--white);
-    padding:12px 22px;
-    text-decoration:none;
-    font-size:0.92rem;
-    border:1px solid var(--ink);
+  footer .loc{color:var(--ink-soft);font-size:0.9rem;}
+  .footer-links{display:flex;gap:16px;flex-wrap:wrap;}
+  .footer-links a{color:var(--ink-soft);text-decoration:none;font-size:0.9rem;}
+  .footer-links a:hover{color:var(--accent);}
+  .footer-note{
+    width:100%;
+    color:var(--ink-soft);
+    font-size:0.78rem;
+    font-style:italic;
+    margin-top:8px;
   }
-  .btn:hover{background:transparent;color:var(--ink);}
 
-  @media (max-width:640px){
+  @media (max-width:720px){
     .metrics{grid-template-columns:repeat(2,1fr);row-gap:20px;}
     .metric{border-left:none !important;padding-left:0 !important;border-top:1px solid var(--rule);padding-top:14px;}
     .metric:first-child{border-top:none;padding-top:0;}
-    .principles, .skillgrid, .split{grid-template-columns:1fr;}
-    .role{grid-template-columns:1fr;gap:6px;}
+    .principles, .stackgrid, .quote-grid, .case-cols{grid-template-columns:1fr;}
     .contact-block{text-align:left;}
     .hero-top{flex-direction:column;}
+    footer{flex-direction:column;}
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -347,43 +438,58 @@
 </style>
 </head>
 <body>
-<div class="wrap">
+
+<nav class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">Valeriia Aksiutina</a>
+    <div class="navlinks">
+      <a href="#approach">Approach</a>
+      <a href="#cases">Case Studies</a>
+      <a href="#samples">Work Samples</a>
+      <a href="#product">Product Project</a>
+      <a href="#stack">Stack</a>
+      <a href="#mentorship">Mentorship</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
 
   <header class="hero">
     <div class="hero-top">
       <div>
         <p class="name">Valeriia Aksiutina</p>
-        <p class="title">Program &amp; Engagement Manager — SaaS delivery across EMEA</p>
+        <p class="role">Technical Program &amp; Engagement Manager — Warsaw, Poland</p>
       </div>
       <div class="contact-block">
-        <div>Warsaw, Poland</div>
         <div><a href="mailto:aksiutinavaleriia@gmail.com">aksiutinavaleriia@gmail.com</a></div>
         <div>+48 573 376 309</div>
         <div><a href="https://linkedin.com/in/valeriia-aksiutina" target="_blank">linkedin.com/in/valeriia-aksiutina</a></div>
+        <div><a href="https://adplist.org/mentors/valeriia-aksiutina" target="_blank">adplist.org/mentors/valeriia-aksiutina</a></div>
       </div>
     </div>
 
-    <p class="lede">Eight years turning messy, cross-functional programs into delivery that clients trust — onboarding, staffing, budgets, and reporting, all built to hold up under scale. I've run this playbook at a HR/Finance SaaS leader, a global engineering consultancy, and two product startups.</p>
+    <p class="lede">8+ years leading enterprise SaaS implementations, platform migrations, and workflow automations across EMEA. Practical on scope boundaries, data-driven on capacity, and focused on commercial profitability.</p>
 
     <div class="metrics">
-      <div class="metric"><span class="num">8 yrs</span><span class="label">program &amp; delivery management</span></div>
-      <div class="metric"><span class="num">$1.5M+</span><span class="label">project budget managed</span></div>
-      <div class="metric"><span class="num">25</span><span class="label">person cross-functional team led</span></div>
-      <div class="metric"><span class="num">100%</span><span class="label">CSAT across active accounts</span></div>
-      <div class="metric"><span class="num">20</span><span class="label">concurrent programs, EMEA-wide</span></div>
+      <div class="metric"><span class="num mono">8+ yrs</span><span class="label">technical delivery leadership</span></div>
+      <div class="metric"><span class="num mono">55%</span><span class="label">margin preserved on fixed-price scope</span></div>
+      <div class="metric"><span class="num mono">15 → 25</span><span class="label">engineering scaling in 4 weeks</span></div>
+      <div class="metric"><span class="num mono">100%</span><span class="label">CSAT, enterprise account retention</span></div>
+      <div class="metric"><span class="num mono">$1.5M+</span><span class="label">project budgets managed</span></div>
     </div>
   </header>
 
-  <section id="how">
+  <section id="approach">
     <h2>How I run a program</h2>
     <div class="principles">
       <div class="principle">
         <h3>Make the complex legible</h3>
-        <p>Charters, scope docs, and status reporting that a stakeholder can read in two minutes — not because it's simpler, but because it's structured.</p>
+        <p>Charters, scope docs, and status reporting a stakeholder can read in two minutes — not because it's simpler, but because it's structured.</p>
       </div>
       <div class="principle">
         <h3>Automate the busywork</h3>
-        <p>Workflow automation that removed 3+ hours of admin tracking per project at Workday, and cut manual accounting work 50% at SignNow.</p>
+        <p>Workflow automation that removed 3+ hours of admin tracking per project, freeing delivery time for actual delivery.</p>
       </div>
       <div class="principle">
         <h3>Watch the metrics, not the vibes</h3>
@@ -391,434 +497,355 @@
       </div>
       <div class="principle">
         <h3>Leave the team stronger</h3>
-        <p>Onboarding materials that cut ramp-up time 15%, plus a PM course and active ADPList mentoring for people moving into the field.</p>
+        <p>Onboarding materials that cut ramp-up time 15%, plus a university PM course and active ADPList mentoring.</p>
       </div>
     </div>
   </section>
 
   <section id="cases">
-    <h2>Project management case studies</h2>
+    <h2>Case studies</h2>
+    <p class="section-intro">Three engagements where the delivery problem was commercial, structural, or relational — not technical.</p>
 
-    <details class="case">
-      <summary>
-        <div class="case-head">
-          <h3>Case 1: Scope realignment &amp; margin protection</h3>
-          <p class="case-meta">Project Manager · Fixed-price · 55% margin preserved · 3-month extension</p>
-        </div>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </summary>
-      <div class="case-body">
+    <div class="case">
+      <h3>Case 1 — Fixed-price automation — scope realignment &amp; margin defense</h3>
+      <div class="tag-row">
+        <span class="tag mono">Project Manager</span>
+        <span class="tag mono">Fixed-price delivery</span>
+        <span class="tag mono">55% margin preserved</span>
+      </div>
+      <div class="case-cols">
+        <div><p class="kicker mono">the friction</p><p>Client expected self-learning ML while the signed SOW specified deterministic automation. Edge-case omissions from discovery surfaced at the same time in front of executive sponsors, threatening project profitability.</p></div>
+        <div><p class="kicker mono">the intervention</p><p>Reconciled discovery and contract baselines internally; absorbed minor discovery misses (~16 hrs) at $0 cost to preserve trust; held a firm line on ML by showing it was technically premature without prior data standardization.</p></div>
+        <div><p class="kicker mono">the outcome</p><p>Defended 55% baseline margin; negotiated data standardization and ML modeling into a separate, paid 3-month contract extension; established upfront pre-sales AI/automation definition gates.</p></div>
+      </div>
+    </div>
 
-      <div class="case-block">
-        <p class="kicker">The challenge</p>
-        <p>Mid-delivery, executive stakeholders escalated two scope gaps: expecting advanced ML instead of the agreed deterministic automation, and missing several uncontracted edge cases. Attempting unstandardized ML work threatened project collapse on a fixed-fee budget.</p>
+    <div class="case">
+      <h3>Case 2 — Platform migration (SAFe) — rapid team scaling, 15 → 25 engineers</h3>
+      <div class="tag-row">
+        <span class="tag mono">Dedicated PM</span>
+        <span class="tag mono">Global Oil &amp; Gas client</span>
+        <span class="tag mono">10 engineers onboarded</span>
       </div>
+      <div class="case-cols">
+        <div><p class="kicker mono">the friction</p><p>Mid-program, an enterprise migration hit a budget-to-scope deficit. The deadline was at risk, and delivery was mathematically unfeasible with the existing 15-person team.</p></div>
+        <div><p class="kicker mono">the intervention</p><p>Re-baselined scope with the Solution Architect; presented 3 trade-off scenarios to leadership; hired and onboarded 10 engineers/QAs in under a month; divided delivery into dual autonomous pods with a 3-week shadow buffer.</p></div>
+        <div><p class="kicker mono">the outcome</p><p>Met the hard client deadline; shipped 100% of high-priority scope with planned variance; secured a follow-on Stage 2 contract extension.</p></div>
+      </div>
+      <div class="retro">
+        <p class="kicker mono">retrospective lesson</p>
+        <p>The 3-week onboarding buffer strained senior tech leads balancing mentoring with delivery. Future rapid scale-ups require a 4-to-6 week staggered onboarding window.</p>
+      </div>
+    </div>
 
-      <div class="case-block">
-        <p class="kicker">The action</p>
-        <ul>
-          <li>Reconciled sales, discovery, and contract baselines internally before addressing the client</li>
-          <li>Absorbed minor internal delivery misses at no cost to build goodwill</li>
-          <li>Proved ML was technically unfeasible without prior data standardization, defining a clear architectural boundary</li>
-          <li>Structured the standardization and ML work into a separate, paid project phase</li>
-        </ul>
+    <div class="case">
+      <h3>Case 3 — Enterprise SaaS — client de-escalation &amp; account recovery</h3>
+      <div class="tag-row">
+        <span class="tag mono">Engagement Manager</span>
+        <span class="tag mono">Enterprise system review</span>
+        <span class="tag mono">100% adoption secured</span>
       </div>
-
-      <div class="case-block">
-        <p class="kicker">The outcome</p>
-        <ul>
-          <li><b>Protected profitability:</b> maintained a 55% delivery margin by preventing severe scope creep</li>
-          <li><b>Account growth:</b> signed a 3-month paid follow-on SOW for Phase 2 implementation</li>
-        </ul>
+      <div class="case-cols">
+        <div><p class="kicker mono">the friction</p><p>An enterprise client rejected post-implementation system recommendations as abstract and impractical. The client went silent and stopped responding to check-ins, halting delivery and putting account retention at risk.</p></div>
+        <div><p class="kicker mono">the intervention</p><p>Intercepted the escalation directly with the client PM; partnered with consulting leadership to rotate the lead consultant for an SME with business-first advisory skills; re-ran discovery translating technical configurations into direct business ROI.</p></div>
+        <div><p class="kicker mono">the outcome</p><p>Customer accepted and adopted 100% of the re-evaluated recommendations, and CSAT standing was preserved without commercial fallout or churn.</p></div>
       </div>
-
-      <div class="case-block">
-        <p class="kicker">Process retrospective</p>
-        <p>Instituted a pre-sales delivery gate to strictly separate "automation" vs. "AI/ML" scoping language upfront.</p>
+      <div class="retro">
+        <p class="kicker mono">retrospective lesson</p>
+        <p>Mid-project feedback check-ins had gone unanswered earlier. Client silence is an active risk indicator requiring an immediate live touchpoint, not another email follow-up.</p>
       </div>
-      </div>
-    </details>
-
-    <details class="case">
-      <summary>
-        <div class="case-head">
-          <h3>Case 2: Rapid team scaling &amp; platform migration</h3>
-          <p class="case-meta">Dedicated PM · SAFe/Agile · On-time delivery · 10 engineers onboarded · Stage 2 SOW won</p>
-        </div>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </summary>
-      <div class="case-body">
-
-      <div class="case-block">
-        <p class="kicker">The challenge</p>
-        <p>Mid-program, an enterprise platform migration for a global Oil &amp; Gas client faced a budget-to-scope deficit. The remaining allocated funds were insufficient to hit the hard deadline with the existing 15-person team, placing the release schedule and executive relationship at risk.</p>
-      </div>
-
-      <div class="case-block">
-        <p class="kicker">The action</p>
-        <ul>
-          <li>Audited and re-baselined the backlog with the Lead BA and Solution Architect to isolate critical path deliverables</li>
-          <li>Modeled three scenario forecasts for leadership: reduce scope, extend timeline, or scale team capacity</li>
-          <li>Led the decision to scale, directly flagging Brooks's Law ramp risks and structuring a 3-week onboarding buffer</li>
-          <li>Recruited, integrated, and restructured 10 new engineers/QAs within 4 weeks (15 → 25), organizing delivery into two parallel, autonomous pods</li>
-        </ul>
-      </div>
-
-      <div class="case-block">
-        <p class="kicker">The outcome</p>
-        <ul>
-          <li><b>Hit critical deadline:</b> delivered 100% of high- and medium-priority scope on time with only a modest, planned budget variance</li>
-          <li><b>Account expansion:</b> high delivery confidence directly secured a follow-on SOW for Stage 2</li>
-        </ul>
-      </div>
-
-      <div class="case-block">
-        <p class="kicker">Process retrospective</p>
-        <p>The 3-week onboarding buffer strained lead engineers who were ramping newcomers while delivering; identified that future scale-ups require a 4-to-6 week staggered onboarding window.</p>
-      </div>
-      </div>
-    </details>
-
-    <details class="case">
-      <summary>
-        <div class="case-head">
-          <h3>Case 3: Client de-escalation &amp; account recovery</h3>
-          <p class="case-meta">Engagement Manager · Enterprise SaaS · Escalation defused · Re-review delivered · Account trust restored</p>
-        </div>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </summary>
-      <div class="case-body">
-
-      <div class="case-block">
-        <p class="kicker">The challenge</p>
-        <p>Following a post-implementation system review, an enterprise customer rejected the initial findings, feeling the advice was abstract, misaligned with their operational reality, and unhelpful. The customer disengaged, halting the delivery stream and putting account sentiment at risk.</p>
-      </div>
-
-      <div class="case-block">
-        <p class="kicker">The action</p>
-        <ul>
-          <li>Stepped in directly with the client PM and Customer Success to listen to grievances and diagnose why the original recommendations missed the mark</li>
-          <li>Partnered with consulting management to rotate the technical consultant for an SME with stronger advisory and domain communication skills</li>
-          <li>Re-initiated a structured discovery pass focused on translating technical system configurations directly into business benefits the client understood</li>
-          <li>Kept Sales, Consulting Leadership, and CS synchronized throughout the reset to ensure a unified, supportive front</li>
-        </ul>
-      </div>
-
-      <div class="case-block">
-        <p class="kicker">The outcome</p>
-        <ul>
-          <li><b>Delivered &amp; accepted:</b> client fully accepted the revised findings, resetting the engagement tone from defensive to collaborative</li>
-          <li><b>Protected account:</b> successfully resolved an active escalation without commercial fallout or churn</li>
-        </ul>
-      </div>
-
-      <div class="case-block">
-        <p class="kicker">Process retrospective</p>
-        <p>Mid-project feedback check-ins had gone unanswered earlier by the customer; reinforced that client silence is an active risk indicator requiring a live touchpoint rather than waiting for formal deliverable handoffs.</p>
-      </div>
-      </div>
-    </details>
+    </div>
   </section>
 
   <section id="samples">
     <h2>Work samples</h2>
-    <details class="sample">
-      <summary>
-        <div class="case-head">
-          <h3>Change Request &amp; Scope Decision Log</h3>
-          <p class="case-meta">Working document from Case 1 · tracks disputed scope items, delivery impact, and commercial calls</p>
-        </div>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </summary>
-      <div class="sample-body">
-        <p class="sample-intro">An excerpt from the log I ran during the scope-realignment case above — the actual working document used to track each disputed item, the delivery impact, and the commercial call, so every scope decision had a clear paper trail back to a rationale.</p>
+    <p class="section-intro">Sanitized delivery artifacts used to enforce scope, quantify risk, report status, and align stakeholders before delivery begins.</p>
 
-        <div class="table-scroll">
-      <table class="crlog">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Feature / request</th>
-            <th>SOW baseline</th>
-            <th>Technical / delivery impact</th>
-            <th>Commercial decision</th>
-            <th>Rationale &amp; next steps</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="id">CR-01</td>
-            <td>Deterministic invoice field extraction (standard PDF templates)</td>
-            <td>In scope</td>
-            <td>Baseline workflow; rule-based regex parsing integrated into the primary pipeline</td>
-            <td class="decision approved">Approved (fixed-price)</td>
-            <td>Core milestone deliverable, on track for scheduled release</td>
-          </tr>
-          <tr>
-            <td class="id">CR-02</td>
-            <td>Uncontracted edge-case routing (handwritten annotations &amp; irregular currency formats)</td>
-            <td>Out of scope (omitted in discovery)</td>
-            <td>~16 engineering hours; minor adjustment to fallback parsing rules</td>
-            <td class="decision absorbed">Absorbed ($0 goodwill)</td>
-            <td>Conceded as strategic goodwill due to ambiguous discovery documentation; protects delivery momentum</td>
-          </tr>
-          <tr>
-            <td class="id">CR-03</td>
-            <td>Dynamic ML layout classification (self-learning multi-format invoice parser)</td>
-            <td>Out of scope (client misalignment)</td>
-            <td>High complexity; requires unbudgeted data cleansing, model training, and continuous validation loops</td>
-            <td class="decision rejected">Rejected from Phase 1</td>
-            <td>Model training is architecturally premature without prior data normalization; holding the line to defend the 55% target margin</td>
-          </tr>
-          <tr>
-            <td class="id">CR-04</td>
-            <td>Data normalization &amp; historical pipeline (prerequisite for ML)</td>
-            <td>Out of scope (unidentified dependency)</td>
-            <td>Multi-week architectural overhaul to clean and structure legacy invoice stores</td>
-            <td class="decision approved">Approved as Phase 2 SOW</td>
-            <td>Scoped into a separate, paid 3-month contract extension to prepare clean training sets</td>
-          </tr>
-          <tr>
-            <td class="id">CR-05</td>
-            <td>Phase 2 production ML model integration</td>
-            <td>Out of scope</td>
-            <td>Full ML inference pipeline with human-in-the-loop retraining</td>
-            <td class="decision approved">Approved as Phase 2 SOW</td>
-            <td>Formally scheduled to follow Phase 2 normalization under the new expanded budget</td>
-          </tr>
-        </tbody>
-      </table>
-        </div>
+    <div class="artifact">
+      <div class="artifact-head">
+        <h3>Executive sprint status report</h3>
+        <p>Stakeholder reporting format — health, goal progress, blockers, and decisions owed back</p>
       </div>
-    </details>
-
-    <details class="sample">
-      <summary>
-        <div class="case-head">
-          <h3>Risk management</h3>
-          <p class="case-meta">Sanitized governance excerpt demonstrating quantitative risk prioritization (5×5 severity matrix) and rapid blocker triage during technical delivery</p>
-        </div>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </summary>
-      <div class="sample-body">
-        <p class="sample-intro">Every risk is scored as Impact × Likelihood (1–5 each) to produce a Severity index from 1–25, then routed to one of four strategies — Accept, Mitigate, Transfer, or Avoid — so prioritization is a calculation, not a judgment call. In parallel, live blockers and dependencies are logged and triaged separately from long-range risk, so day-to-day delivery friction gets resolved fast without polluting the strategic risk view.</p>
-
-        <p class="kicker" style="margin-bottom:10px;">Risk management approach</p>
-        <div class="skillgrid" style="margin:0 30px 24px 30px;">
-          <div class="skillcat">
-            <h3>Risk vs. issue</h3>
-            <p>A risk is a future event that could negatively affect schedule or cost. An issue is a problem that already exists today and needs immediate handling.</p>
-          </div>
-          <div class="skillcat">
-            <h3>Scoring</h3>
-            <p>Likelihood (0–5) × Impact (0–5) = Severity (0–25) — a consistent, comparable score for ranking every risk on the register.</p>
-          </div>
-          <div class="skillcat">
-            <h3>Status flow</h3>
-            <p>Active (identified, under observation) → In progress (triggered, mitigation underway) → Closed (no longer relevant).</p>
-          </div>
-          <div class="skillcat">
-            <h3>Mitigation strategy</h3>
-            <p>Every risk is assigned one of four responses: Accept, Mitigate, Transfer, or Avoid — decided at the point of entry, not after the fact.</p>
-          </div>
-          <div class="skillcat">
-            <h3>Ownership</h3>
-            <p>Each risk has a named owner responsible for monitoring it and executing the mitigation plan.</p>
-          </div>
-          <div class="skillcat">
-            <h3>Early warning</h3>
-            <p>Symptoms (leading indicators) are logged against each risk, so a trigger event prompts action before the risk becomes an issue.</p>
-          </div>
-        </div>
-
-        <p class="kicker" style="margin-bottom:10px;">Risk register — severity matrix excerpt</p>
+      <div class="artifact-body">
+        <p class="sub-label mono">Executive health snapshot</p>
         <div class="table-scroll">
           <table class="crlog">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Status</th>
-                <th>Impact</th>
-                <th>Likelihood</th>
-                <th>Severity</th>
-                <th>Mitigation strategy</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Dimension</th><th>Status</th><th>Operational summary</th></tr></thead>
             <tbody>
-              <tr><td class="id">R-03</td><td>Active</td><td>5</td><td>5</td><td class="sev-high">25</td><td>Transfer</td></tr>
-              <tr><td class="id">R-09</td><td>Closed</td><td>5</td><td>5</td><td class="sev-high">25</td><td>Transfer</td></tr>
-              <tr><td class="id">R-12</td><td>In progress</td><td>5</td><td>4</td><td class="sev-high">20</td><td>Mitigate</td></tr>
-              <tr><td class="id">R-15</td><td>Active</td><td>4</td><td>4</td><td class="sev-med">16</td><td>Mitigate</td></tr>
-              <tr><td class="id">R-21</td><td>Active</td><td>4</td><td>3</td><td class="sev-med">12</td><td>Mitigate</td></tr>
-              <tr><td class="id">R-13</td><td>In progress</td><td>2</td><td>3</td><td class="sev-low">6</td><td>Transfer</td></tr>
-              <tr><td class="id">R-02</td><td>Active</td><td>1</td><td>5</td><td class="sev-low">5</td><td>Mitigate</td></tr>
-              <tr><td class="id">R-14</td><td>In progress</td><td>2</td><td>1</td><td class="sev-low">2</td><td>Accept</td></tr>
+              <tr><td>Overall health</td><td><span class="pill pill-good mono">On track</span></td><td>Core deliverables on schedule; critical sprint goals accomplished</td></tr>
+              <tr><td>Scope &amp; margin</td><td><span class="pill pill-good mono">55% margin</span></td><td>Scope strictly guarded; 55% target margin maintained</td></tr>
+              <tr><td>Schedule</td><td><span class="pill pill-warn mono">Under watch</span></td><td>Critical path dependent on external staging API authorization</td></tr>
+              <tr><td>Team capacity</td><td><span class="pill pill-good mono">Stable</span></td><td>10 engineers fully integrated into dual autonomous pods</td></tr>
             </tbody>
           </table>
         </div>
 
-        <p class="kicker" style="margin:24px 0 10px 0;">Blocker &amp; dependency triage — resolution log</p>
+        <p class="sub-label mono">Sprint goal &amp; milestone progress — 92% story points delivered</p>
         <div class="table-scroll">
           <table class="crlog">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Description</th>
-                <th>Status</th>
-                <th>Impact</th>
-                <th>Resolution notes</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Workstream / key feature</th><th>Story points</th><th>Status</th><th>Milestone phase</th></tr></thead>
             <tbody>
-              <tr><td class="id">1</td><td>Provisioning application secrets — delay receiving Salesforce &amp; app identity configuration</td><td>Closed</td><td>High</td><td>Blocked application testing until settings were provided</td></tr>
-              <tr><td class="id">2</td><td>Provisioning a Salesforce dev instance for integration testing</td><td>Closed</td><td>High</td><td>No integration testing possible without a dev instance — resolved in 6 days; team blocked up to 6 person-days</td></tr>
-              <tr><td class="id">3</td><td>CI pipeline builds failing</td><td>Closed</td><td>High</td><td>Resolved same sprint</td></tr>
-              <tr><td class="id">4</td><td>Dependency/package updates blocking release verification</td><td>Closed</td><td>High</td><td>Blocked the release verification workflow for 3 days pending review</td></tr>
-              <tr><td class="id">5</td><td>Billing module misbehaving in beta environment</td><td>Closed</td><td>Medium</td><td>Release couldn't be created with billing enabled; invoices weren't generating</td></tr>
-              <tr><td class="id">6</td><td>Staging environment instability blocked dev/test access</td><td>Closed</td><td>High</td><td>2–3 day delay from access/config issues; impact communicated proactively to stakeholders</td></tr>
-              <tr><td class="id">7</td><td>Legacy data cleanup required on staging environment</td><td>Open</td><td>Medium</td><td>DB reset needed, ~1 day impact across QC &amp; dev; added to sprint review</td></tr>
-              <tr><td class="id">8</td><td>Builds failing mid-week</td><td>Closed</td><td>Medium</td><td>Fixed the following business day; QC team most affected</td></tr>
+              <tr><td>Core ingestion engine</td><td class="mono num">13</td><td><span class="pill pill-good mono">Completed</span></td><td>Release 1.0</td></tr>
+              <tr><td>Automated fallback logic</td><td class="mono num">8</td><td><span class="pill pill-good mono">Completed</span></td><td>Release 1.0</td></tr>
+              <tr><td>Edge-case regex parsing</td><td class="mono num">5</td><td><span class="pill pill-good mono">Completed</span></td><td>Release 1.0</td></tr>
+              <tr><td>Staging secrets &amp; API sync</td><td class="mono num">5</td><td><span class="pill pill-warn mono">In progress</span></td><td>Carried to next sprint</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="sub-label mono">Active blockers &amp; impediments</p>
+        <div class="table-scroll">
+          <table class="crlog">
+            <thead><tr><th>Issue</th><th>Blocker description</th><th>Impact on velocity</th><th>Mitigation action taken</th></tr></thead>
+            <tbody>
+              <tr><td class="id mono">ISS-12</td><td>Staging environment access delay</td><td>~2 dev days blocked</td><td>Re-sequenced sprint backlog to prioritize offline mock units</td></tr>
+              <tr><td class="id mono">ISS-13</td><td>Third-party API secrets latency</td><td>QC validation delayed 1 day</td><td>Direct escalation to vendor lead; local stubs deployed</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="block-list">
+          <p class="kicker mono">decisions required from stakeholders</p>
+          <ul>
+            <li>Sign-off on the Phase 2 contract amendment (SOW-02) for data normalization, to prevent an idle engineering gap between phases</li>
+            <li>Client SecOps approval for the outbound webhook whitelist on production staging</li>
+          </ul>
+        </div>
+        <div class="block-list">
+          <p class="kicker mono">next sprint focus</p>
+          <ul>
+            <li>Finalize staging integration end-to-end testing and containerized sandbox verification</li>
+            <li>Cut release-candidate branch for User Acceptance Testing (UAT)</li>
+            <li>Conclude the 3-week onboarding shadow buffer and shift pods to full feature autonomy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="artifact">
+      <div class="artifact-head">
+        <h3>Scope realignment log</h3>
+        <p>Commercial change control &amp; fixed-price margin protection</p>
+      </div>
+      <div class="artifact-body">
+        <div class="table-scroll">
+          <table class="crlog">
+            <thead><tr><th>CR ID</th><th>Requested capability</th><th>SOW baseline</th><th>Commercial resolution</th><th>Impact on margin</th></tr></thead>
+            <tbody>
+              <tr><td class="id mono">CR-01</td><td>Deterministic field parser</td><td>In scope</td><td><span class="pill pill-good mono">Approved (fixed-fee)</span></td><td>Baseline delivered on budget</td></tr>
+              <tr><td class="id mono">CR-02</td><td>Manual edge-case routing</td><td>Omitted in discovery</td><td><span class="pill pill-warn mono">Absorbed ($0 goodwill)</span></td><td>Conceded ~16 dev hrs to maintain trust</td></tr>
+              <tr><td class="id mono">CR-03</td><td>Dynamic ML layout classifier</td><td>Out of scope</td><td><span class="pill pill-bad mono">Rejected from Phase 1</span></td><td>Preserved 55% target margin</td></tr>
+              <tr><td class="id mono">CR-04</td><td>Data normalization pipeline</td><td>Prerequisite</td><td><span class="pill pill-good mono">Approved as Phase 2 SOW</span></td><td>Added 3-month paid contract extension</td></tr>
             </tbody>
           </table>
         </div>
       </div>
-    </details>
+    </div>
 
-    <details class="sample">
-      <summary>
-        <div class="case-head">
-          <h3>Discovery book: stakeholder &amp; scope discovery framework</h3>
-          <p class="case-meta">Anonymized excerpt — stakeholder mapping, session cadence, and open-question tracking used to align a multi-team engagement before delivery began</p>
+    <div class="artifact">
+      <div class="artifact-head">
+        <h3>Risk management</h3>
+        <p>Quantitative 5×5 severity matrix &amp; active impediment resolution log</p>
+      </div>
+      <div class="artifact-body">
+        <div class="stackgrid" style="margin-bottom:8px;">
+          <div class="stackcat"><h3>Risk vs. issue</h3><p>A risk is a future event that could affect schedule or cost. An issue already exists and needs immediate handling.</p></div>
+          <div class="stackcat"><h3>Scoring</h3><p>Likelihood (1–5) × Impact (1–5) = Severity (1–25), so prioritization is a calculation, not a judgment call.</p></div>
+          <div class="stackcat"><h3>Mitigation strategy</h3><p>Every risk is assigned Accept, Mitigate, Transfer, or Avoid at the point of entry — not after the fact.</p></div>
+          <div class="stackcat"><h3>Early warning</h3><p>Leading symptoms are logged against each risk, so a trigger prompts action before it becomes an issue.</p></div>
         </div>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </summary>
-      <div class="sample-body">
-        <p class="sample-intro">Run at the start of a multi-team engagement to de-risk delivery before it begins: mapping every stakeholder's role and communication touchpoints, running a structured sequence of discovery sessions, and logging every open question until it's formally closed. All names, company identifiers, and client-specific technical details below have been generalized.</p>
 
-        <p class="kicker" style="margin:0 30px 10px 30px;">Stakeholder &amp; communication RACI (excerpt)</p>
+        <p class="sub-label mono">Risk register — severity matrix</p>
         <div class="table-scroll">
           <table class="crlog">
-            <thead>
-              <tr><th>Role</th><th>Org</th><th>Primary responsibility</th><th>Kickoff</th><th>Weekly status</th><th>Governance</th></tr>
-            </thead>
+            <thead><tr><th>ID</th><th>Status</th><th>Impact</th><th>Likelihood</th><th>Severity</th><th>Strategy</th></tr></thead>
             <tbody>
-              <tr><td>Engineering VP</td><td>Client</td><td>Executive sponsor &amp; escalation point</td><td>✓</td><td>✓</td><td>–</td></tr>
-              <tr><td>Product Owner</td><td>Client</td><td>Requirements &amp; scope authority</td><td>✓</td><td>✓</td><td>–</td></tr>
-              <tr><td>Solutions Architect</td><td>Client</td><td>Architecture guidance, technical Q&amp;A</td><td>–</td><td>–</td><td>–</td></tr>
-              <tr><td>Delivery PM</td><td>Delivery partner</td><td>Coordinates all cross-team activity</td><td>✓</td><td>✓</td><td>✓</td></tr>
-              <tr><td>Business Analyst</td><td>Delivery partner</td><td>Requirements documentation, roadmap</td><td>✓</td><td>✓</td><td>–</td></tr>
-              <tr><td>Solutions Architect</td><td>Delivery partner</td><td>Scope estimation, technical design</td><td>✓</td><td>✓</td><td>–</td></tr>
-              <tr><td>Delivery Team Lead</td><td>Delivery partner</td><td>Owns delivery execution</td><td>✓</td><td>–</td><td>–</td></tr>
+              <tr><td class="id mono">R-03</td><td>Active</td><td class="mono num">5</td><td class="mono num">5</td><td class="mono num sev-high">25</td><td>Transfer</td></tr>
+              <tr><td class="id mono">R-09</td><td>Closed</td><td class="mono num">5</td><td class="mono num">5</td><td class="mono num sev-high">25</td><td>Transfer</td></tr>
+              <tr><td class="id mono">R-12</td><td>In progress</td><td class="mono num">5</td><td class="mono num">4</td><td class="mono num sev-high">20</td><td>Mitigate</td></tr>
+              <tr><td class="id mono">R-15</td><td>Active</td><td class="mono num">4</td><td class="mono num">4</td><td class="mono num sev-med">16</td><td>Mitigate</td></tr>
+              <tr><td class="id mono">R-21</td><td>Active</td><td class="mono num">4</td><td class="mono num">3</td><td class="mono num sev-med">12</td><td>Mitigate</td></tr>
+              <tr><td class="id mono">R-13</td><td>In progress</td><td class="mono num">2</td><td class="mono num">3</td><td class="mono num sev-low">6</td><td>Transfer</td></tr>
+              <tr><td class="id mono">R-02</td><td>Active</td><td class="mono num">1</td><td class="mono num">5</td><td class="mono num sev-low">5</td><td>Mitigate</td></tr>
+              <tr><td class="id mono">R-14</td><td>In progress</td><td class="mono num">2</td><td class="mono num">1</td><td class="mono num sev-low">2</td><td>Accept</td></tr>
             </tbody>
           </table>
         </div>
 
-        <p class="kicker" style="margin:24px 30px 10px 30px;">Discovery session cadence (excerpt)</p>
+        <p class="sub-label mono">Impediment resolution log</p>
         <div class="table-scroll">
           <table class="crlog">
-            <thead>
-              <tr><th>Session</th><th>Type</th><th>Focus</th><th>Status</th></tr>
-            </thead>
+            <thead><tr><th>ID</th><th>Type</th><th>Blocker / risk description</th><th>Severity / impact</th><th>Mitigation action taken</th></tr></thead>
             <tbody>
-              <tr><td>Discovery kick-off</td><td>Functional</td><td>Stakeholders, dependencies, goals, scope boundaries, timeline alignment</td><td>Completed</td></tr>
-              <tr><td>Product review</td><td>Functional</td><td>Backlog review, in-scope items, acceptance criteria</td><td>Completed</td></tr>
-              <tr><td>Architecture review</td><td>Technical</td><td>Documentation, source repos, data structures, integration points</td><td>Completed</td></tr>
-              <tr><td>Scope refinement (series)</td><td>Functional</td><td>Iterative scope narrowing with product owners</td><td>Completed</td></tr>
-              <tr><td>Testing approach &amp; knowledge share</td><td>Functional</td><td>QA strategy alignment, tooling</td><td>Completed</td></tr>
-              <tr><td>Discovery outcomes presentation</td><td>Functional</td><td>Final scope, architecture, estimate, team composition, risks, timeline</td><td>Completed</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p class="kicker" style="margin:24px 30px 10px 30px;">Open questions log (excerpt)</p>
-        <div class="table-scroll">
-          <table class="crlog">
-            <thead>
-              <tr><th>Question</th><th>Raised by</th><th>Type</th><th>Status</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Who are the key stakeholders across business, product, and engineering?</td><td>PM</td><td>Organizational</td><td>Resolved</td></tr>
-              <tr><td>What are the business goals and success criteria for the engagement?</td><td>BA</td><td>Functional</td><td>Resolved</td></tr>
-              <tr><td>How is product ownership divided, and who owns the master backlog?</td><td>BA</td><td>Organizational</td><td>Open</td></tr>
-              <tr><td>What existing work can be reused from the prior delivery team?</td><td>BA</td><td>Functional</td><td>Open</td></tr>
-              <tr><td>What's the preferred communication framework going forward — cadence, escalation path?</td><td>BA</td><td>Organizational</td><td>Open</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p class="kicker" style="margin:24px 30px 10px 30px;">Deliverables tracker (excerpt)</p>
-        <div class="table-scroll">
-          <table class="crlog">
-            <thead>
-              <tr><th>Deliverable</th><th>Status</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Discovery kickoff &amp; initial approach</td><td class="decision approved">Done</td></tr>
-              <tr><td>Architecture solution overview</td><td class="decision approved">Done</td></tr>
-              <tr><td>Scope &amp; vision overview</td><td class="decision approved">Done</td></tr>
-              <tr><td>Out-of-scope statement</td><td class="decision approved">Done</td></tr>
-              <tr><td>Assumptions &amp; constraints</td><td class="decision approved">Done</td></tr>
-              <tr><td>Initial risk register</td><td class="decision approved">Done</td></tr>
-              <tr><td>Work breakdown structure &amp; estimate</td><td class="decision approved">Done</td></tr>
-              <tr><td>Preliminary timeline</td><td class="decision approved">Done</td></tr>
+              <tr><td class="id mono">R-03</td><td><span class="pill pill-neutral mono">RISK</span></td><td>Third-party API secrets latency</td><td><span class="pill pill-bad mono">Critical (score 25)</span></td><td>Built local stub mocks to prevent staging test delays</td></tr>
+              <tr><td class="id mono">ISS-01</td><td><span class="pill pill-neutral mono">ISSUE</span></td><td>CRM dev sandbox access delay</td><td><span class="pill pill-warn mono">6 man-days blocked</span></td><td>Re-sequenced backlog for offline modules; fast-tracked admin overrides</td></tr>
+              <tr><td class="id mono">ISS-04</td><td><span class="pill pill-neutral mono">ISSUE</span></td><td>CI/CD staging pipeline build failure</td><td><span class="pill pill-warn mono">2–3 days lost</span></td><td>Rebuilt containerized tests with DevOps; added pre-merge verification</td></tr>
+              <tr><td class="id mono">ISS-07</td><td><span class="pill pill-neutral mono">ISSUE</span></td><td>Legacy data cleanup required on staging</td><td><span class="pill pill-warn mono">~1 day, QC &amp; dev</span></td><td>DB reset scheduled; raised in sprint review for prioritization</td></tr>
             </tbody>
           </table>
         </div>
       </div>
-    </details>
+    </div>
+
+    <div class="artifact">
+      <div class="artifact-head">
+        <h3>Discovery book</h3>
+        <p>Stakeholder mapping, session cadence, and open-question tracking — anonymized excerpt</p>
+      </div>
+      <div class="artifact-body">
+        <p class="sub-label mono">Stakeholder &amp; communication matrix</p>
+        <div class="table-scroll">
+          <table class="crlog">
+            <thead><tr><th>Role</th><th>Org</th><th>Primary responsibility</th><th>Kickoff</th><th>Weekly status</th><th>Governance</th></tr></thead>
+            <tbody>
+              <tr><td>Engineering VP</td><td>Client</td><td>Executive sponsor &amp; escalation point</td><td class="mono">✓</td><td class="mono">✓</td><td class="mono">–</td></tr>
+              <tr><td>Product Owner</td><td>Client</td><td>Requirements &amp; scope authority</td><td class="mono">✓</td><td class="mono">✓</td><td class="mono">–</td></tr>
+              <tr><td>Solutions Architect</td><td>Client</td><td>Architecture guidance, technical Q&amp;A</td><td class="mono">–</td><td class="mono">–</td><td class="mono">–</td></tr>
+              <tr><td>Delivery PM</td><td>Delivery partner</td><td>Coordinates all cross-team activity</td><td class="mono">✓</td><td class="mono">✓</td><td class="mono">✓</td></tr>
+              <tr><td>Business Analyst</td><td>Delivery partner</td><td>Requirements documentation, roadmap</td><td class="mono">✓</td><td class="mono">✓</td><td class="mono">–</td></tr>
+              <tr><td>Solutions Architect</td><td>Delivery partner</td><td>Scope estimation, technical design</td><td class="mono">✓</td><td class="mono">✓</td><td class="mono">–</td></tr>
+              <tr><td>Delivery Team Lead</td><td>Delivery partner</td><td>Owns delivery execution</td><td class="mono">✓</td><td class="mono">–</td><td class="mono">–</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="sub-label mono">Discovery session cadence</p>
+        <div class="table-scroll">
+          <table class="crlog">
+            <thead><tr><th>Session</th><th>Type</th><th>Focus</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Discovery kick-off</td><td>Functional</td><td>Stakeholders, dependencies, goals, scope boundaries, timeline</td><td><span class="pill pill-good mono">Completed</span></td></tr>
+              <tr><td>Product review</td><td>Functional</td><td>Backlog review, in-scope items, acceptance criteria</td><td><span class="pill pill-good mono">Completed</span></td></tr>
+              <tr><td>Architecture review</td><td>Technical</td><td>Documentation, source repos, data structures, integration points</td><td><span class="pill pill-good mono">Completed</span></td></tr>
+              <tr><td>Scope refinement (series)</td><td>Functional</td><td>Iterative scope narrowing with product owners</td><td><span class="pill pill-good mono">Completed</span></td></tr>
+              <tr><td>Testing approach</td><td>Functional</td><td>QA strategy alignment, tooling, knowledge share</td><td><span class="pill pill-good mono">Completed</span></td></tr>
+              <tr><td>Outcomes presentation</td><td>Functional</td><td>Final scope, architecture, estimate, team composition, risks</td><td><span class="pill pill-good mono">Completed</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="sub-label mono">Open questions log</p>
+        <div class="table-scroll">
+          <table class="crlog">
+            <thead><tr><th>Question</th><th>Raised by</th><th>Type</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Who are the key stakeholders across business, product, and engineering?</td><td>PM</td><td>Organizational</td><td><span class="pill pill-good mono">Resolved</span></td></tr>
+              <tr><td>What are the business goals and success criteria for the engagement?</td><td>BA</td><td>Functional</td><td><span class="pill pill-good mono">Resolved</span></td></tr>
+              <tr><td>How is product ownership divided, and who owns the master backlog?</td><td>BA</td><td>Organizational</td><td><span class="pill pill-warn mono">Open</span></td></tr>
+              <tr><td>What existing work can be reused from the prior delivery team?</td><td>BA</td><td>Functional</td><td><span class="pill pill-warn mono">Open</span></td></tr>
+              <tr><td>What is the preferred communication cadence and escalation path?</td><td>BA</td><td>Organizational</td><td><span class="pill pill-warn mono">Open</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="sub-label mono">Discovery deliverables</p>
+        <div class="table-scroll">
+          <table class="crlog">
+            <thead><tr><th>Deliverable</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Discovery kickoff &amp; initial approach</td><td><span class="pill pill-good mono">Done</span></td></tr>
+              <tr><td>Architecture solution overview</td><td><span class="pill pill-good mono">Done</span></td></tr>
+              <tr><td>Scope &amp; vision overview</td><td><span class="pill pill-good mono">Done</span></td></tr>
+              <tr><td>Out-of-scope statement</td><td><span class="pill pill-good mono">Done</span></td></tr>
+              <tr><td>Assumptions &amp; constraints</td><td><span class="pill pill-good mono">Done</span></td></tr>
+              <tr><td>Initial risk register</td><td><span class="pill pill-good mono">Done</span></td></tr>
+              <tr><td>Work breakdown structure &amp; estimate</td><td><span class="pill pill-good mono">Done</span></td></tr>
+              <tr><td>Preliminary timeline</td><td><span class="pill pill-good mono">Done</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="skills">
-    <h2>Toolkit</h2>
-    <div class="skillgrid">
-      <div class="skillcat">
-        <h3>Methodologies</h3>
-        <p>Agile, Scrum, Kanban, SAFe, Waterfall</p>
+  <section id="product">
+    <h2>Product project</h2>
+    <p class="section-intro">Built during a Product Management course — taking a concept from problem framing through to a product vision pitch and a clickable prototype.</p>
+
+    <div class="case product-card">
+      <h3>Cadence Agent — recurring scheduling automation</h3>
+      <div class="tag-row">
+        <span class="tag mono">Personal project</span>
+        <span class="tag mono">Product Management course</span>
+        <span class="tag mono">Prototype + pitch</span>
       </div>
-      <div class="skillcat">
-        <h3>Program management</h3>
-        <p>Scope, schedule &amp; budget management, stakeholder &amp; people management, risk management, roadmapping, prioritization, change management</p>
+
+      <p class="kicker mono">the problem</p>
+      <p>Organizations waste hours coordinating recurring meetings across multiple calendars and time zones. Scheduling demands manual coordination, cross-checking availability, and managing frequent conflicts or reschedules — leaving operational roles spending hours on logistics instead of strategic work.</p>
+
+      <p class="kicker mono">the solution</p>
+      <ul>
+        <li><b>Orchestrate recurring sessions</b> — transform manual scheduling into structured, repeatable workflows</li>
+        <li><b>Automated workflows</b> — visibility into participant availability without manual cross-checking</li>
+        <li><b>Time zone coordination</b> — easy scheduling across distributed teams</li>
+        <li><b>Reduced overhead</b> — eliminate manual coordination work entirely</li>
+      </ul>
+
+      <div class="link-buttons">
+        <a class="link-btn" href="https://schedule-bulk.lovable.app" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          Clickable prototype
+        </a>
+        <a class="link-btn" href="https://gamma.app/docs/CadenceAgent-3pwp6ag46e7evqr" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          Product vision pitch
+        </a>
       </div>
-      <div class="skillcat">
-        <h3>Tools</h3>
-        <p>JIRA, Confluence, Asana, Smartsheets, Figma, Adobe XD, Miro, Google Suite, MS Office</p>
+    </div>
+  </section>
+
+  <section id="stack">
+    <h2>Stack &amp; background</h2>
+    <div class="stackgrid">
+      <div class="stackcat">
+        <h3>Governance &amp; methodologies</h3>
+        <p>SAFe, Scrum, Kanban, Hybrid Stage-Gate, fixed-price scope control, 5×5 RAID registers, budget management ($1.5M+)</p>
       </div>
-      <div class="skillcat">
-        <h3>AI-assisted delivery</h3>
-        <p>Prompt engineering and AI-assisted workflow optimization, using Claude, Gemini, and Lovable to speed up reporting and process work</p>
+      <div class="stackcat">
+        <h3>Systems &amp; tooling</h3>
+        <p>Jira, Confluence, Asana, Smartsheet, Workday Enterprise SaaS, Miro, Figma</p>
       </div>
-      <div class="skillcat">
+      <div class="stackcat">
+        <h3>Modern AI workflows</h3>
+        <p>Claude, Gemini, prompt engineering for PMs, workflow automations saving 3+ hrs/project</p>
+      </div>
+      <div class="stackcat">
         <h3>Languages</h3>
         <p>English (advanced), Ukrainian (native), Russian (advanced), Polish (pre-intermediate)</p>
       </div>
-      <div class="skillcat">
+      <div class="stackcat">
+        <h3>Education</h3>
+        <p><span class="deg">MSc, Project Management</span><span class="sch">Sumy State University, Ukraine</span></p>
+        <p style="margin-top:12px;"><span class="deg">BSc, Germanic Philology</span><span class="sch">Sumy State University, Ukraine</span></p>
+      </div>
+      <div class="stackcat">
         <h3>Certification</h3>
         <p>ICAgile Certified Professional — Agile Project and Delivery Management</p>
       </div>
     </div>
   </section>
 
-  <section id="education">
-    <h2>Education</h2>
-    <div class="edu-item">
-      <div class="deg">MSc, Project Management</div>
-      <div class="sch">Sumy State University, Ukraine</div>
-    </div>
-    <div class="edu-item">
-      <div class="deg">BSc, Germanic Philology</div>
-      <div class="sch">Sumy State University, Ukraine</div>
-    </div>
-  </section>
-
   <section id="mentorship">
     <h2>Mentorship &amp; teaching</h2>
-    <p class="lede" style="margin-top:0;">I delivered a university-level PM course to 10+ participants — two secured PM job offers as a result — and I'm an active mentor on <a href="https://adplist.org/mentors/valeriia-aksiutina" target="_blank">ADPList</a>, helping people transition into project management, prepare for their first PM role, and build portfolios that show real work rather than just job titles.</p>
+    <p class="lede" style="margin-top:0;max-width:70ch;">Lectured a university-level PM course to 10+ participants, two of whom secured PM job offers. Active mentor on <a href="https://adplist.org/mentors/valeriia-aksiutina" target="_blank">ADPList</a>, supporting career transitions into project management.</p>
 
     <div class="badge-row">
-      <div class="badge-chip"><span class="dot"></span>Top 50 Mentor <span class="when">Jun 2026</span></div>
-      <div class="badge-chip"><span class="dot"></span>Top 50 Mentor <span class="when">Mar 2026</span></div>
-      <div class="badge-chip"><span class="dot"></span>Top 100 Mentor <span class="when">Jun 2025</span></div>
-      <div class="badge-chip"><span class="dot"></span>Top 50 Mentor <span class="when">Mar 2025</span></div>
+      <div class="badge-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 21l5-3 5 3-1.5-8.5"/></svg>
+        <span>Top 50 Mentor</span><span class="when mono">Jun 2026</span>
+      </div>
+      <div class="badge-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 21l5-3 5 3-1.5-8.5"/></svg>
+        <span>Top 50 Mentor</span><span class="when mono">Mar 2026</span>
+      </div>
+      <div class="badge-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 21l5-3 5 3-1.5-8.5"/></svg>
+        <span>Top 100 Mentor</span><span class="when mono">Jun 2025</span>
+      </div>
+      <div class="badge-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 21l5-3 5 3-1.5-8.5"/></svg>
+        <span>Top 50 Mentor</span><span class="when mono">Mar 2025</span>
+      </div>
     </div>
 
     <div class="quote-grid">
@@ -846,7 +873,15 @@
   </section>
 
   <footer>
-    <a class="btn" href="mailto:aksiutinavaleriia@gmail.com">Email me</a>
+    <div class="loc">Warsaw, Poland</div>
+    <div>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/valeriia-aksiutina" target="_blank">LinkedIn</a>
+        <a href="https://adplist.org/mentors/valeriia-aksiutina" target="_blank">ADPList</a>
+        <a href="mailto:aksiutinavaleriia@gmail.com">Email</a>
+      </div>
+      <div class="footer-note">All project data sanitized for NDA and IP compliance.</div>
+    </div>
   </footer>
 
 </div>
